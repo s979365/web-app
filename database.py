@@ -1,15 +1,7 @@
 import sqlite3
 
 
-def seed_database():
-    """Add sample users to the database"""
-    conn = get_db()
-    # Add sample users here if needed
-     sample_users = [
-        ("alice", "Password123!"),
-        ("bob", "SecurePass456@"),
-        ("charlie", "MyPassword789#"),
-    ]
+
        
 
 def get_db():
@@ -26,5 +18,14 @@ def init_db():
             password TEXT
         )
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS foods (
+            food_name TEXT PRIMARY KEY,
+            user TEXT,
+            food TEXT,
+            type TEXT,
+            FOREIGN KEY (user) REFERENCES users(username)
+        )
+    """)    
     conn.commit()
     conn.close()
