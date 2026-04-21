@@ -22,7 +22,6 @@ def init_db():
         CREATE TABLE IF NOT EXISTS foods (
             food_name TEXT PRIMARY KEY,
             user TEXT,
-            food TEXT,
             type TEXT,
             FOREIGN KEY (user) REFERENCES users(username)
         )
