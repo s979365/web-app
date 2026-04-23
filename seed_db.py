@@ -43,6 +43,12 @@ def seed_database():
 
         conn.commit()
         print("\nDatabase seeding complete!")
+        for food_name, food_type in sample_foods:
+            e_conn.execute(
+                "INSERT INTO foods (food_name, type) VALUES (?, ?)",
+                (food_name, food_type)
+            )
+            print(f"Added food: {food_name} of type {food_type}")
     
     except Exception as e:
         conn.rollback()
