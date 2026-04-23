@@ -10,7 +10,7 @@
 # *Note: If you try to seed data and get an error about "UNIQUE constraint failed: users.username", it means you have already seeded the database.
 # If you need to seed the database again, simply delete the users.db file and run the seed script again.
 
-from database import get_db, init_db, get_foods_db
+from database import get_db, init_db
 import bcrypt
 
 def seed_database():
@@ -19,7 +19,7 @@ def seed_database():
 
 
     conn = get_db()
-    e_conn = get_foods_db()
+  
     # Sample users with passwords
     sample_users = [
         ("alice", "Password123!"),
@@ -41,14 +41,14 @@ def seed_database():
             )
             print(f"Created user: {username}")
 
-        conn.commit()
-        print("\nDatabase seeding complete!")
         for food_name, food_type in sample_foods:
-            e_conn.execute(
+            conn.execute(
                 "INSERT INTO foods (food_name, type) VALUES (?, ?)",
                 (food_name, food_type)
             )
             print(f"Added food: {food_name} of type {food_type}")
+        print("\nDatabase seeding complete!")
+        conn.commit()
     
     except Exception as e:
         conn.rollback()
