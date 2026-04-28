@@ -86,8 +86,8 @@ def dashboard():
 
     # TODO: Get all entries that belong to the logged-in user
     # Example:
-    entries = conn.execute(
-        "SELECT * FROM entries WHERE user=?",
+    foods = conn.execute(
+        "SELECT * FROM foods WHERE user=?",
         (session["user"],)
     ).fetchall()
 
@@ -99,7 +99,7 @@ def dashboard():
     # return render_template("dashboard.html", entries=entries, username=session["user"])
 
     # TEMPORARY (remove later)
-    return render_template("secret.html", username=session["user"])
+    return render_template("dashboard.html", username=session["user"])
 
 
 # ---------- CREATE ----------
@@ -126,7 +126,7 @@ def create():
 
         # TODO: Commit and close
 
-        return redirect(url_for("dashboard"))
+        return redirect(url_for("/dashboard"))
 
     return render_template("create.html")
 """
