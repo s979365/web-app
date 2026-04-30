@@ -115,7 +115,14 @@ def dashboard():
 def create():
     if "user" not in session:
         return redirect(url_for("login"))
-
+    try:
+         conn = get_db()
+         foods = conn.execute(
+            "SELECT * FROM foods WHERE user=?",
+            (session["user"],)
+        ).fetchall()
+    except Exception as e:
+        print(f"Error occurred: {e}")
     if request.method == "POST":
         # TODO: Get form data (title, content)
         food_name = request.form["food_name"].strip()
