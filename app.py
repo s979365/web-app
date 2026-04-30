@@ -118,14 +118,14 @@ def create():
 
     if request.method == "POST":
         # TODO: Get form data (title, content)
-        Food = request.form["Food"].strip()
+        food_name = request.form["food_name"].strip()
         type = request.form["type"].strip()
 
         conn = get_db()
         # TODO: Connect to database
         conn.execute(
-            "INSERT INTO foods (Food, type, user) VALUES (?, ?, ?)",
-            (Food, type, session["user"])
+            "INSERT INTO foods (food_name, type, user) VALUES (?, ?, ?)",
+            (food_name, type, session["user"])
         )
         # TODO: Insert into entries table
         # IMPORTANT: include session["user"]

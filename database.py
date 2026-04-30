@@ -27,7 +27,7 @@ def init_db():
     """)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS foods (
-            Food TEXT PRIMARY KEY,
+            food_name TEXT PRIMARY KEY,
             user TEXT,
             type TEXT,
             FOREIGN KEY (user) REFERENCES users(username)
