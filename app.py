@@ -115,29 +115,29 @@ def dashboard():
 def create():
     if "user" not in session:
         return redirect(url_for("login"))
-    try:
-         conn = get_db()
-         foods = conn.execute(
-            "SELECT * FROM foods WHERE user=?",
-            (session["user"],)
-        ).fetchall()
-    except Exception as e:
-        print(f"Error occurred: {e}")
+    
     if request.method == "POST":
         # TODO: Get form data (title, content)
         food_name = request.form["food_name"].strip()
         type = request.form["type"].strip()
-
-        conn = get_db()
+        if not food_name or not type:
+            return "Fields cannot be empty"
+        else: 
+            conn = get_db()
         # TODO: Connect to database
-        conn.execute(
-            "INSERT INTO foods (food_name, type, user) VALUES (?, ?, ?)",
-            (food_name, type, session["user"])
-        )
+            try:
+                conn.execute(
+                    "INSERT INTO foods (food_name, type, user) VALUES (?, ?, ?)",
+                    (food_name, type, session["user"])
+                )
         # TODO: Insert into entries table
         # IMPORTANT: include session["user"]
-        conn.commit()
-        conn.close()
+                conn.commit()
+                return redirect(url_for("dashboard"))
+            except:
+                conn.rollback()
+            finally:
+                conn.close()
         # TODO: Commit and close
 
         return redirect(url_for("dashboard"))
