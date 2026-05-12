@@ -4,35 +4,35 @@ APP PLANNING & DESIGN
 
 1. PROJECT IDEA
 -------------------------
-- What is your app called?
-- What type of app is it? (journal, listings, notes, etc.)
-- What will users use your app for?
+- What is your app called? Food journal
+- What type of app is it? (journal, listings, notes, etc.) journal
+- What will users use your app for? Store favorite foods and types
 
 2. DATA MODEL (WHAT ARE YOU STORING?)
 -------------------------
-- What is a single “entry” in your app?
-- What fields will each entry have? (title, content, date, etc.)
-- How will entries be connected to a user?
+- What is a single “entry” in your app? Food
+- What fields will each entry have? (title, content, date, etc.) Food, type
+- How will entries be connected to a user? They will enter it in themselves and it'll display on their page
 
 3. CORE FEATURES (CRUD)
 -------------------------
-- What can users CREATE?
-- What will they see on the main page (READ)?
-- What can users EDIT (UPDATE)?
-- What can users DELETE?
+- What can users CREATE? New foods and types of food
+- What will they see on the main page (READ)? Welcome, log in or sign up
+- What can users EDIT (UPDATE)? The foods they entered and type 
+- What can users DELETE? Same thing 
 
 4. USER FLOW
 -------------------------
-- What happens after a user logs in?
-- What pages/routes will your app need? (dashboard, create, edit, etc.)
-- Describe a typical user experience from login → using your app
+- What happens after a user logs in? They see their own information (foods and types)
+- What pages/routes will your app need? (dashboard, create, edit, etc.) Dashboard, create, edit, delete, register
+- Describe a typical user experience from login → using your app The user signs up, then goes back to the login page and then logs in, gets taken to dashboard and creates new foods and types, these show up on their dashboard
 
 5. USER EXPERIENCE (UX)
 -------------------------
-- How should your app look and feel?
-- How will users navigate between pages?
-- How will entries be displayed (list, cards, etc.)?
+- How should your app look and feel? Simple, organized, colorful
+- How will users navigate between pages? buttons
+- How will entries be displayed (list, cards, etc.)? list
 
 6. OPTIONAL FEATURES
 -------------------------
-- What extra features might you add? (search, tags, sorting, etc.)
+- What extra features might you add? (search, tags, sorting, etc.) Pictures, dropdown(if we can figure it out)
