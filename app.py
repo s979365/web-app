@@ -96,10 +96,10 @@ def dashboard():
 
     # TODO: Pass entries into your template
     # Example:
-    # return render_template("dashboard.html", entries=entries, username=session["user"])
+    return render_template("dashboard.html", foods=foods, username=session["user"])
 
     # TEMPORARY (remove later)
-    return render_template("dashboard.html", username=session["user"])
+    # return render_template("dashboard.html", username=session["user"])
 
 
 # ---------- CREATE ----------

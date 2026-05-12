@@ -18,21 +18,21 @@
 <!-- Example structure: -->
 
 
-{% for entry in entries %}
+{% for food in foods %}
     <div>
-        <h3>{{ entry['Food'] }}</h3>
-        <p>{{ entry['type'] }}</p>
+        <h3>{{ food['food_name'] }}</h3>
+        <p>{{ food['type'] }}</p>
 
         <!-- TODO: Add Edit link -->
-        /edit/{{ entry['id'] }} 
+        /edit/{{ food['id'] }} 
 
         <!-- TODO: Add Delete link -->
-        /delete/{{ entry['id'] }} 
+        /delete/{{ food['id'] }} 
 
     </div>
     <hr>
 {% endfor %}
--->
+
 
 <!-- TODO: If no entries exist, display a message like:
 "No entries yet!" -->
