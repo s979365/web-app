@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Delete Entry</h2>
+<h2>Delete food</h2>
 
 <!-- TODO: Ask user to confirm deletion -->
 
 <p>Are you sure you want to delete this entry?</p>
 
-<!-- TODO: Show entry title or content -->
+<h3>{{ foods['food'] }}</h3>
+<p>{{ foods ['Type']}}</p>
 
-<!-- TODO: Add a button to confirm delete -->
+<form method = "POST">
+    <button type ="submit" style = "background-color: crimson; color:aliceblue;">Yes, Delete food</button>
+</form>
 
-<!-- TODO: Add a cancel link back to dashboard -->
+<a href = "{{ url_for('dashboard') }}">Cancel</a>
 
 {% endblock %}
