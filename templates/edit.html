@@ -1,17 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <h2>Edit Entry</h2>
 
-<!-- TODO: Create a form that sends a POST request -->
-
 <form method="POST">
-
-    <!-- TODO: Pre-fill title using entry data -->
-    <!-- Hint: value="{{ entry['title'] }}" -->
-    <input name = "food" placeholder="Food" value = " {{food['food_name']} }"><br>
-    <input name = "type" placeholder=" Type of food" value="{{ food['type']} }"><br>
-    <button type = "submit">Update Entry</button>
+    <input name = "food_name" placeholder="food_name" value = " {{ foods['food_name'] }}"><br>
+    <input name = "type" placeholder="type" value="{{ foods['type'] }}"><br>
+    <button type = "submit">Update foods</button>
     <!-- TODO: Pre-fill content using entry data -->
 
     <!-- TODO: Add submit button -->

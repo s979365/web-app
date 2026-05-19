@@ -163,12 +163,12 @@ def edit(id):
     # TODO: Get entry WHERE id AND user
     # This prevents editing other users' data
 
-    entry = conn.execute(
+    foods = conn.execute(
     "SELECT * FROM foods WHERE id =?",
     (id,)
     ).fetchone()
 
-    if not food:
+    if not foods:
         conn.close
         return "Entry not found"
 
@@ -200,7 +200,7 @@ def edit(id):
                 return "Error Updating entry"
             
     conn.close()
-    return render_template("edit.html", food=food)
+    return render_template("edit.html", foods=foods)
 
 
 # ---------- DELETE ----------
@@ -208,8 +208,8 @@ def edit(id):
 # This should:
 # - Delete an entry from the database
 # - Redirect back to dashboard
-@app.route("/delete/<int:id>")
-def delete(food_name):
+@app.route("/delete/<int:id>", methods = ["GET","POST"])
+def delete(id):
     if "user" not in session:
         return redirect(url_for("login"))
 
@@ -217,32 +217,31 @@ def delete(food_name):
     conn = get_db()
 
     # TODO: Delete entry WHERE id AND user
-    entry = conn.execute(
+    foods = conn.execute(
         "SELECT * FROM foods WHERE id=?", 
         (id,)
-        ).fetchone()
+    ).fetchone()
     
     # TODO: Commit and close
-    if not entry:
+    if not foods:
         conn.close()
         return "Entry not found"
     
     if request.method == "POST":
         try:
             conn.execute(
-                "DELETE FROM foods WHERE id = ?",
+                "DELETE FROM foods WHERE id=?",
                 (id,)
             )
-            conn.commit
+            conn.commit()
         except: 
-            conn.rollback
+            conn.rollback()
 
         finally:
-            conn.close
+            conn.close()
 
-    return redirect(url_for("dashboard"))
-    conn.close()
-
+        return redirect(url_for("dashboard"))
+    return render_template("delete.html", foods=foods)
 
 
 @app.route("/logout")

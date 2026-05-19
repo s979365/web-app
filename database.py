@@ -27,10 +27,10 @@ def init_db():
     """)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS foods (
-            food_name TEXT PRIMARY KEY,
-            user TEXT,
-            type TEXT,
-            FOREIGN KEY (user) REFERENCES users(username)
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user TEXT, 
+            food_name TEXT,
+            type TEXT
         )
     """)    
     conn.commit()

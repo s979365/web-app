@@ -27,9 +27,9 @@ def seed_database():
         ("charlie", "MyPassword789#"),
     ]
     sample_foods = [
-        ("poke", "fishy"),
-        ("ginger pork", "herbal"),
-        ("japchae", "savory"),
+        ("alice", "poke", "fishy"),
+        ("bob", "ginger pork", "herbal"),
+        ("bob", "japchae", "savory"),
     ]
     
     try:
@@ -41,10 +41,10 @@ def seed_database():
             )
             print(f"Created user: {username}")
 
-        for food_name, food_type in sample_foods:
+        for user, food_name, food_type in sample_foods:
             conn.execute(
-                "INSERT INTO foods (food_name, type) VALUES (?, ?)",
-                (food_name, food_type)
+                "INSERT INTO foods (user, food_name, type) VALUES (?, ?, ?)",
+                (user, food_name, food_type)
             )
             print(f"Added food: {food_name} of type {food_type}")
         print("\nDatabase seeding complete!")

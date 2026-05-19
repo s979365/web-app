@@ -7,11 +7,11 @@
 
 <p>Are you sure you want to delete this entry?</p>
 
-<h3>{{ foods['food'] }}</h3>
-<p>{{ foods ['Type']}}</p>
+<h3>{{ foods['food_name'] }}</h3>
+<p>{{ foods['type'] }}</p>
 
 <form method = "POST">
-    <button type ="submit" style = "background-color: crimson; color:aliceblue;">Yes, Delete food</button>
+    <button type ="submit" style = "background-color: crimson; color:aliceblue;">Yes, Delete foods</button>
 </form>
 
 <a href = "{{ url_for('dashboard') }}">Cancel</a>
